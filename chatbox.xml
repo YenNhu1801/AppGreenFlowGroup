@@ -1,10 +1,12 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chat Box Demo</title>
-  <style>
+<?xml version="1.0" encoding="UTF-8"?>
+<ChatBoxUI lang="vi">
+  <Meta>
+    <Title>Chat Box Demo</Title>
+    <Viewport>width=device-width, initial-scale=1.0</Viewport>
+    <Charset>UTF-8</Charset>
+  </Meta>
+
+  <Styles><![CDATA[
     * {
       box-sizing: border-box;
       margin: 0;
@@ -190,37 +192,44 @@
         max-height: 60vh;
       }
     }
-  </style>
-</head>
-<body>
-  <button id="chatToggle" class="chat-toggle">💬</button>
+  ]]></Styles>
 
-  <div id="chatWrapper" class="chat-wrapper">
-    <div class="chat-header">
-      <div class="chat-header-left">
-        <div class="agent-avatar">AI</div>
-        <div class="agent-info">
-          <div class="agent-name">Hỗ trợ trực tuyến</div>
-          <div class="agent-status">Online</div>
-        </div>
-      </div>
-      <button id="chatCloseBtn" class="chat-close-btn">✕</button>
-    </div>
+  <Layout>
+    <ChatToggle id="chatToggle" class="chat-toggle">💬</ChatToggle>
 
-    <div id="chatMessages" class="chat-messages">
-      <div class="message-row message-agent">
-        <div class="bubble-agent">Xin chào 👋 Mình có thể giúp gì hôm nay?</div>
-        <div class="msg-time">now</div>
-      </div>
-    </div>
+    <ChatWrapper id="chatWrapper" class="chat-wrapper">
+      <Header class="chat-header">
+        <HeaderLeft class="chat-header-left">
+          <AgentAvatar class="agent-avatar">AI</AgentAvatar>
+          <AgentInfo class="agent-info">
+            <AgentName class="agent-name">Hỗ trợ trực tuyến</AgentName>
+            <AgentStatus class="agent-status">Online</AgentStatus>
+          </AgentInfo>
+        </HeaderLeft>
+        <CloseButton id="chatCloseBtn" class="chat-close-btn">✕</CloseButton>
+      </Header>
 
-    <form id="chatForm" class="chat-input-area">
-      <input id="chatInput" type="text" placeholder="Nhập tin nhắn..." autocomplete="off" required />
-      <button type="submit" class="send-btn">Gửi</button>
-    </form>
-  </div>
+      <Messages id="chatMessages" class="chat-messages">
+        <MessageRow class="message-row message-agent">
+          <Bubble class="bubble-agent">Xin chào 👋 Mình có thể giúp gì hôm nay?</Bubble>
+          <Time class="msg-time">now</Time>
+        </MessageRow>
+      </Messages>
 
-  <script>
+      <InputArea id="chatForm" class="chat-input-area">
+        <UserInput
+          id="chatInput"
+          type="text"
+          placeholder="Nhập tin nhắn..."
+          autocomplete="off"
+          required="true"
+        />
+        <SendButton type="submit" class="send-btn">Gửi</SendButton>
+      </InputArea>
+    </ChatWrapper>
+  </Layout>
+
+  <Script><![CDATA[
     const chatToggleBtn = document.getElementById("chatToggle");
     const chatWrapper = document.getElementById("chatWrapper");
     const chatCloseBtn = document.getElementById("chatCloseBtn");
@@ -256,7 +265,7 @@
       const bubble = document.createElement("div");
       bubble.className = "bubble-user";
       bubble.textContent = content;
-      const time = document.createElement("div");
+      const time = document.createElement("div";
       time.className = "msg-time";
       time.textContent = getTimeLabel();
       row.appendChild(bubble);
@@ -288,6 +297,5 @@
       const now = new Date();
       return now.getHours().toString().padStart(2, "0") + ":" + now.getMinutes().toString().padStart(2, "0");
     }
-  </script>
-</body>
-</html>
+  ]]></Script>
+</ChatBoxUI>
